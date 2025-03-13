@@ -2,9 +2,8 @@ from crewai import Crew
 from textwrap import dedent
 from agents import TravelAgents
 from tasks import TravelTasks
+from langchain_ollama.llms import OllamaLLM
 
-from dotenv import load_dotenv
-load_dotenv()
 
 
 class TripCrew:
@@ -13,10 +12,11 @@ class TripCrew:
         self.cities = cities
         self.date_range = date_range
         self.interests = interests
+        self.llm = OllamaLLM(model="ollama/mistral", base_url="http://localhost:11434/v1",temperature=0.7,)
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
-        agents = TravelAgents()
+        agents = TravelAgents(self.llm)
         tasks = TravelTasks()
 
         # Define your custom agents and tasks here
@@ -49,6 +49,7 @@ class TripCrew:
 
         # Define your custom crew here
         crew = Crew(
+            manager_llm=self.llm,
             agents=[expert_travel_agent,
                     city_selection_expert,
                     local_tour_guide
@@ -58,7 +59,7 @@ class TripCrew:
                 identify_city,
                 gather_city_info
             ],
-            verbose=True,
+            # verbose=True,
         )
 
         result = crew.kickoff()
@@ -69,22 +70,26 @@ class TripCrew:
 if __name__ == "__main__":
     print("## Welcome to Trip Planner Crew")
     print('-------------------------------')
-    origin = input(
-        dedent("""
-      From where will you be traveling from?
-    """))
-    cities = input(
-        dedent("""
-      What are the cities options you are interested in visiting?
-    """))
-    date_range = input(
-        dedent("""
-      What is the date range you are interested in traveling?
-    """))
-    interests = input(
-        dedent("""
-      What are some of your high level interests and hobbies?
-    """))
+    origin = "Montréal"
+    # input(
+    #     dedent("""
+    #   From where will you be traveling from?
+    # """))
+    cities = "Paris and Lyon"
+    # input(
+    #     dedent("""
+    #   What are the cities options you are interested in visiting?
+    # """))
+    date_range = "first of may to first of june"
+    # input(
+    #     dedent("""
+    #   What is the date range you are interested in traveling?
+    # """))
+    interests = "museums, parks, and restaurants"
+    # input(
+    #     dedent("""
+    #   What are some of your high level interests and hobbies?
+    # """))
 
     trip_crew = TripCrew(origin, cities, date_range, interests)
     result = trip_crew.run()
