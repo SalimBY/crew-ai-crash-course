@@ -1,9 +1,7 @@
 from langchain_core.tools import tool
 
-class CalculatorTools():
-
-    @tool("Make a calculation")
-    def calculate(self, operation):  # Add 'self' parameter here
+class CalculatorTools:
+    def calculate(self, operation):
         """Useful to perform any mathematical calculations,
         like sum, minus, multiplication, division, etc.
         The input to this tool should be a mathematical
