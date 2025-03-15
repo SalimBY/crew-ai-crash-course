@@ -1,8 +1,8 @@
 from crewai.tools import BaseTool
 
 class CalculatorTool(BaseTool):
-    name = "Calculator Tool"
-    description = "Useful to perform mathematical calculations like sum, minus, multiplication, division, etc."
+    name: str = "Calculator Tool"
+    description: str = "Useful to perform mathematical calculations like sum, minus, multiplication, division, etc."
     
     def _run(self, operation: str):
         """Perform the calculation with the given operation"""
