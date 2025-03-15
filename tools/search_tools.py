@@ -1,13 +1,12 @@
 import json
 import os
-
 import requests
 from crewai.tools import BaseTool
 
 
 class SearchTool(BaseTool):
-    name = "Search Tool"
-    description = "Useful to search the internet about a given topic and return relevant results"
+    name: str = "Search Tool"
+    description: str = "Useful to search the internet about a given topic and return relevant results"
     
     def _run(self, query: str):
         """Execute the search with the given query"""
