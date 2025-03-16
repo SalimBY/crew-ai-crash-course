@@ -4,6 +4,7 @@ from textwrap import dedent
 from crewai.llm import LLM
 from tools.search_tools import SearchTool
 from tools.calculator_tools import CalculatorTool
+from tools.scrape_tools import ScrapeWebsiteTool
 
 """
 Creating Agents Cheat Sheet:
@@ -42,21 +43,17 @@ class TravelAgents:
             name = "Search Tool",
             description = "Useful to search the internet about a given topic and return relevant results"
         )
-        # Tool(
-        #     name="Search Tool",
-        #     description="Useful to search the internet about a given topic and return relevant results",
-        #     func=lambda query: search_tools._run(query)
-        # )
         
         self.calculator_tool = CalculatorTool(
             name = "Calculator Tool",
             description = "Useful to perform mathematical calculations like sum, minus, multiplication, division, etc."
         )
-        # Tool(
-        #     name="Calculator Tool",
-        #     description="Useful to perform mathematical calculations like sum, minus, multiplication, division, etc.",
-        #     func=lambda operation: calculator_tools.calculate(operation)
-        # )
+
+        self.scrape_tool = ScrapeWebsiteTool(
+            name = "Scrape Website Tool",
+            description = "Useful to access and read a website content."
+        )
+
 
     def expert_travel_agent(self):
         return Agent(
