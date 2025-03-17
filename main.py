@@ -11,7 +11,7 @@ class TripCrew:
         self.cities = cities
         self.date_range = date_range
         self.interests = interests
-        self.llm = OllamaLLM(model="ollama/mistral", base_url="http://localhost:11434",temperature=0.7,)
+        self.llm = OllamaLLM(model="ollama/llama3.1", base_url="http://localhost:11434",temperature=0.7,)
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
