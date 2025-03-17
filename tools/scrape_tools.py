@@ -1,4 +1,3 @@
-# https://github.com/crewAIInc/crewAI-tools/blob/main/crewai_tools/tools/scrape_website_tool/scrape_website_tool.py
 import os
 import re
 from typing import Any, Optional, Type

@@ -39,20 +39,14 @@ class TravelAgents:
         self.llm = llm
         
         # Fix the tool wrapping to handle arguments correctly
-        self.search_tool = SearchTool(
-            name = "Search Tool",
-            description = "Useful to search the internet about a given topic and return relevant results"
-        )
+        self.search_tool = SearchTool()
         
         self.calculator_tool = CalculatorTool(
             name = "Calculator Tool",
             description = "Useful to perform mathematical calculations like sum, minus, multiplication, division, etc."
         )
 
-        self.scrape_tool = ScrapeWebsiteTool(
-            name = "Scrape Website Tool",
-            description = "Useful to access and read a website content."
-        )
+        self.scrape_tool = ScrapeWebsiteTool()
 
 
     def expert_travel_agent(self):
@@ -67,7 +61,8 @@ class TravelAgents:
                         """),
             tools=[
                 self.search_tool,
-                self.calculator_tool
+                self.calculator_tool,
+                self.scrape_tool
             ],
             verbose=True,
             llm=self.llm
@@ -80,7 +75,10 @@ class TravelAgents:
                 f"""Expert at analyzing travel data to pick ideal destinations"""),
             goal=dedent(
                 f"""Select the best cities based on weather, season, prices, and traveler interests"""),
-            tools=[self.search_tool],
+            tools=[
+                self.search_tool,
+                self.scrape_tool
+            ],
             verbose=True,
             llm=self.llm
         )
@@ -92,7 +90,10 @@ class TravelAgents:
         about the city, it's attractions and customs"""),
             goal=dedent(
                 f"""Provide the BEST insights about the selected city"""),
-            tools=[self.search_tool],
+            tools=[
+                self.search_tool,
+                self.scrape_tool
+            ],
             verbose=True,
             llm=self.llm
         )

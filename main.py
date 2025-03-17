@@ -5,7 +5,6 @@ from tasks import TravelTasks
 from langchain_ollama.llms import OllamaLLM
 
 
-
 class TripCrew:
     def __init__(self, origin, cities, date_range, interests):
         self.origin = origin
