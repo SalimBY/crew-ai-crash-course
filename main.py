@@ -3,6 +3,7 @@ from textwrap import dedent
 from agents import TravelAgents
 from tasks import TravelTasks
 from langchain_ollama.llms import OllamaLLM
+from crewai.llm import LLM
 
 
 class TripCrew:
@@ -11,7 +12,13 @@ class TripCrew:
         self.cities = cities
         self.date_range = date_range
         self.interests = interests
-        self.llm = OllamaLLM(model="ollama/llama3.3:70b", base_url="http://localhost:11434",temperature=0.7)
+        self.llm = LLM(model="ollama/llama3.3:70b", base_url="http://localhost:11434", temperature=0.7, timeout=6000)
+        # self.llm = OllamaLLM(model="ollama/llama3.3:70b", base_url="http://localhost:11434", temperature=0.7)
+
+        # neat little trick to set the timeout to 6000ms
+        # shhh don't tell anyone ;)
+        # setattr(self.llm, 'timeout', 6000)
+        # dont need it anymore, we can set it directly in the constructor with crewai.llm.LLM and not langchain_ollama.llms.OllamaLLM
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
