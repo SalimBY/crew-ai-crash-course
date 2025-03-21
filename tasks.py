@@ -68,40 +68,7 @@ class TravelTasks:
             """
             ),
             expected_output=dedent(
-                f"""
-            A comprehensive 7-day travel itinerary formatted as follows:
-            
-            # [CITY] 7-DAY TRAVEL ITINERARY
-            
-            ## Overview
-            - Trip dates: [start date] to [end date]
-            - Weather summary for the period
-            - Overall budget estimate: $X,XXX
-            
-            ## Packing Suggestions
-            - List of essential items based on weather and planned activities
-            
-            ## Daily Schedule
-            
-            ### Day 1: [Day of Week, Date]
-            - **Morning**: [Activities with specific locations, times, costs]
-            - **Afternoon**: [Activities with specific locations, times, costs]
-            - **Evening**: [Activities with specific locations, times, costs]
-            - **Meals**: [Specific restaurant recommendations with cuisine type and price range]
-            - **Accommodation**: [Specific hotel/lodging with address and nightly rate]
-            
-            [Continue this format for all 7 days]
-            
-            ## Budget Breakdown
-            - Accommodation: $X,XXX
-            - Food: $XXX
-            - Activities: $XXX
-            - Transportation: $XXX
-            - Miscellaneous: $XXX
-            
-            ## Safety Tips
-            - Location-specific safety advice and emergency contacts
-            """
+                f"""a 7 day bullet point itinerary with actual places to visit, actual hotels to stay, and actual restaurants to go to for each day of the trip and each city."""
             ),
             agent=agent,
         )
@@ -129,33 +96,7 @@ class TravelTasks:
                 """
             ),
             expected_output=dedent(
-                f"""
-                # CITY SELECTION REPORT
-                
-                ## Selected City: [CITY NAME]
-                
-                ## Selection Criteria Analysis
-                
-                ### Weather Conditions
-                - Current and forecasted weather for {travel_dates}
-                - Seasonal considerations
-                
-                ### Cost Analysis
-                - Flight costs from {origin}: $XXX (specific airline and flight options)
-                - Average accommodation costs: $XXX per night
-                - Estimated daily expenses: $XXX
-                
-                ### Events and Attractions
-                - Upcoming events during {travel_dates}
-                - Top attractions that match interests: {interests}
-                
-                ## Alternative Cities Considered
-                - Brief comparison with other options ({cities})
-                - Reasons for selection/rejection
-                
-                ## Recommendation Summary
-                Concise explanation of why this city is the optimal choice
-                """
+                f"""A report on the cities to visit based on the criteria provided. """
             ),
             agent=agent,
         )
@@ -179,44 +120,7 @@ class TravelTasks:
                 """
             ),
             expected_output=dedent(
-                f"""
-                # COMPREHENSIVE GUIDE TO {city.upper()}
-                
-                ## Overview
-                Brief introduction to {city}, including geographical location, population, and unique characteristics
-                
-                ## Cultural Context
-                - Local customs and etiquette
-                - Language considerations
-                - Cultural norms visitors should be aware of
-                
-                ## Top Attractions
-                1. [Attraction Name] - Description, opening hours, entrance fees, best time to visit
-                2. [Attraction Name] - Description, opening hours, entrance fees, best time to visit
-                3. [Attraction Name] - Description, opening hours, entrance fees, best time to visit
-                [At least 5-10 attractions relevant to {interests}]
-                
-                ## Hidden Gems
-                Lesser-known but worthwhile places to visit, especially those matching {interests}
-                
-                ## Food and Dining
-                - Local specialties and must-try dishes
-                - Restaurant recommendations across different price ranges
-                - Food markets and culinary experiences
-                
-                ## Transportation Options
-                - Getting around the city (public transit, taxis, rideshares)
-                - Costs and logistics
-                
-                ## Weather Forecast
-                Detailed weather expectations for {travel_dates}
-                
-                ## Estimated Costs
-                - Accommodations: price ranges for different types of lodging
-                - Meals: average costs for different dining experiences
-                - Activities: entrance fees and tour costs
-                - Local transportation: daily costs
-                """
+                f"""A detailed city guide with information on key attractions, local customs, special events, and daily activity recommendations for each city."""
             ),
             agent=agent,
         )

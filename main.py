@@ -2,7 +2,7 @@ from crewai import Crew
 from textwrap import dedent
 from agents import TravelAgents
 from tasks import TravelTasks
-from langchain_ollama.llms import OllamaLLM
+#from langchain_ollama.llms import OllamaLLM
 from crewai.llm import LLM
 
 
